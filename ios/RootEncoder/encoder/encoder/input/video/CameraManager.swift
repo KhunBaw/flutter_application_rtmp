@@ -1,0 +1,151 @@
+//
+//  CameraManager.swift
+//  app
+//
+//  Created by Pedro on 13/09/2020.
+//  Copyright © 2020 pedroSG94. All rights reserved.
+//
+
+import UIKit
+import Foundation
+import AVFoundation
+
+public class CameraManager: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
+    
+    private let thread = DispatchQueue.global()
+    var session: AVCaptureSession?
+    var device: AVCaptureDevice?
+    var input: AVCaptureDeviceInput?
+    var output: AVCaptureVideoDataOutput?
+    var prevLayer: AVCaptureVideoPreviewLayer?
+    var videoOutput: AVCaptureVideoDataOutput?
+    var cameraView: UIView? = nil
+
+    private var facing = CameraHelper.Facing.BACK
+    //TODO fix use different resolution in startPreview and in prepareVideo
+    private var resolution: CameraHelper.Resolution = .vga640x480
+    private(set) var running = false
+    private var callback: GetCameraData
+    
+    public init(cameraView: UIView, callback: GetCameraData) {
+        self.cameraView = cameraView
+        self.callback = callback
+    }
+    
+    public init(callback: GetCameraData) {
+        self.callback = callback
+    }
+
+    public func stop() {
+        session?.stopRunning()
+        session?.removeOutput(output!)
+        session?.removeInput(input!)
+        running = false
+    }
+
+    public func prepare(resolution: CameraHelper.Resolution) {
+        self.resolution = resolution
+    }
+
+    public func start() {
+        start(facing: facing, resolution: resolution)
+    }
+
+    public func start(resolution: CameraHelper.Resolution) {
+        start(facing: facing, resolution: resolution)
+    }
+
+    public func switchCamera() {
+        if (facing == .FRONT) {
+            facing = .BACK
+        } else if (facing == .BACK) {
+            facing = .FRONT
+        }
+        if (running) {
+            stop()
+            start(facing: facing, resolution: resolution)
+        }
+    }
+    
+    public func start(facing: CameraHelper.Facing, resolution: CameraHelper.Resolution) {
+        self.facing = facing
+        if (running) {
+            if (resolution != self.resolution) {
+                stop()
+            } else {
+                return
+            }
+        }
+        session = AVCaptureSession()
+        let preset: AVCaptureSession.Preset = resolution.value
+        session?.sessionPreset = preset
+        let position = facing == CameraHelper.Facing.BACK ? AVCaptureDevice.Position.back : AVCaptureDevice.Position.front
+        let devices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: position)
+        device = devices.devices[0]
+
+        do{
+            input = try AVCaptureDeviceInput(device: device!)
+        }
+        catch{
+            print(error)
+        }
+
+        if let input = input{
+            session?.addInput(input)
+        }
+
+        output = AVCaptureVideoDataOutput()
+        let thread = DispatchQueue.global()
+        output?.setSampleBufferDelegate(self, queue: thread)
+        output?.alwaysDiscardsLateVideoFrames = true
+        output?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
+
+        session?.addOutput(output!)
+
+        prevLayer = AVCaptureVideoPreviewLayer(session: session!)
+        if (cameraView != nil) {
+            prevLayer?.frame.size = cameraView!.frame.size
+        }
+        prevLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        if let interfaceOrientation = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation {
+            let orientation = UIInterfaceOrientation(rawValue: interfaceOrientation.rawValue)!
+            prevLayer?.connection?.videoOrientation = transformOrientation(orientation: orientation)
+        }
+        if (cameraView != nil) {
+            cameraView!.layer.addSublayer(prevLayer!)
+        }
+        session?.commitConfiguration()
+        thread.async {
+            self.session?.startRunning()
+        }
+        running = true
+    }
+    
+    public func cameraWithPosition(position: AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInTelephotoCamera, .builtInTrueDepthCamera, .builtInWideAngleCamera, ], mediaType: .video, position: position)
+
+        if let device = deviceDiscoverySession.devices.first {
+            return device
+        }
+        return nil
+    }
+    
+    private func transformOrientation(orientation: UIInterfaceOrientation) -> AVCaptureVideoOrientation {
+        switch orientation {
+        case .landscapeLeft:
+            return .landscapeLeft
+        case .landscapeRight:
+            return .landscapeRight
+        case .portraitUpsideDown:
+            return .portraitUpsideDown
+        default:
+            return .portrait
+        }
+    }
+    
+    public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        thread.async {
+            self.callback.getYUVData(from: sampleBuffer)
+        }
+    }
+}
