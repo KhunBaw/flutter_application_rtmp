@@ -6,11 +6,12 @@ import 'package:flutter/widgets.dart';
 class PlatformChannel {
   /// ประกาศชื่อช่อง channel
   static const MethodChannel _methodChannel = MethodChannel('sample.test.rtmp/camera');
+  static const MethodChannel _methodChannelIos = MethodChannel('plugins.felix.angelov/textview');
   // static const EventChannel _eventChannel = const EventChannel('sample.test.platform/number');
 
   /// MethodChannel com.test.platform/text
   Future<int?> startService() async {
-    return await _methodChannel.invokeMethod<int>('startService');
+    return await _methodChannelIos.invokeMethod<int>('startService');
   }
 
   Future<String?> startStream(Uri url) async {
@@ -49,6 +50,11 @@ class _TextViewState extends State<TextView> {
   Widget build(BuildContext context) {
     if (Platform.isAndroid) {
       return AndroidView(
+        viewType: 'plugins.felix.angelov/textview',
+        onPlatformViewCreated: _onPlatformViewCreated,
+      );
+    } else if (Platform.isIOS) {
+      return UiKitView(
         viewType: 'plugins.felix.angelov/textview',
         onPlatformViewCreated: _onPlatformViewCreated,
       );

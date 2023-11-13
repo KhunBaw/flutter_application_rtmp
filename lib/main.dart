@@ -58,12 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // if (showId != null) SizedBox(height: MediaQuery.of(context).size.height - 500, child: const Texture(textureId: 1)),
 
-            SizedBox(
-              height: MediaQuery.of(context).size.height - 500,
-              child: TextView(
-                onTextViewCreated: (controller) => onTextViewCreated,
-              ),
-            ),
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.height - 500,
+            //   child: TextView(
+            //     onTextViewCreated: (controller) => onTextViewCreated,
+            //   ),
+            // ),
             TextFormField(controller: controllerRtmp, decoration: const InputDecoration(labelText: "RTMP")),
             TextFormField(controller: controllerKey, decoration: const InputDecoration(labelText: "KEY")),
             TextButton(
