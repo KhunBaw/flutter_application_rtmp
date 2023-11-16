@@ -55,7 +55,7 @@ class _TextViewState extends State<TextView> {
       );
     } else if (Platform.isIOS) {
       return UiKitView(
-        viewType: 'plugins.felix.angelov/textview',
+        viewType: 'MagicPlatformView',
         onPlatformViewCreated: _onPlatformViewCreated,
       );
     }
@@ -75,8 +75,8 @@ class TextViewController {
 
   final MethodChannel _channel;
 
-  Future<void> setText(String text) async {
+  Future<void> startService() async {
     // assert(text != null);
-    return _channel.invokeMethod('setText', text);
+    return _channel.invokeMethod('startService');
   }
 }

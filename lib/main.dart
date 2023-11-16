@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_3/platform_channel.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-void main() {
+void main() async {
+  Map<Permission, PermissionStatus> statuses = await [
+    Permission.camera,
+    Permission.microphone,
+  ].request();
+  print(statuses[Permission.camera]);
+
   runApp(const MyApp());
 }
 
@@ -70,11 +77,12 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () async {
                 // await PlatformChannel().startPreview();
                 // await Future.delayed(const Duration(seconds: 5));
-                var data = await PlatformChannel().startService();
-                print("test $data");
+                // var data = await PlatformChannel().startService();
+                // print("test $data");
                 // await Future.delayed(Duration(seconds: 5));
+                onTextViewCreated?.startService();
                 setState(() {
-                  showId = data;
+                  // showId = data;
                 });
                 // await PlatformChannel().startPreview();
               },

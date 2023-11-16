@@ -14,10 +14,6 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		A96D80542B02355A00FABDFE /* RootEncoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A96D80512B02354F00FABDFE /* RootEncoder.framework */; };
-		A96D80562B02356000FABDFE /* rtmp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A96D80552B02356000FABDFE /* rtmp.framework */; };
-		A96D80582B02356800FABDFE /* rtsp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A96D80572B02356800FABDFE /* rtsp.framework */; };
-		A96D805A2B02356C00FABDFE /* encoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A96D80592B02356C00FABDFE /* encoder.framework */; };
 		E8F025B4D96FF08F4E806F8B /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962026E2B92329370E8BB698 /* Pods_Runner.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,21 +25,20 @@
 			remoteGlobalIDString = 97C146ED1CF9000F007C117D;
 			remoteInfo = Runner;
 		};
-		A96D80502B02354F00FABDFE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A96D80482B02354F00FABDFE /* RootEncoder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB6562182AC498A600DD8958;
-			remoteInfo = RootEncoder;
-		};
-		A96D80522B02354F00FABDFE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A96D80482B02354F00FABDFE /* RootEncoder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB6562222AC498A700DD8958;
-			remoteInfo = RootEncoderTests;
-		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A9DAC9052B056B45009FE4FF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0C3382E3BDDF628D578055C3 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -64,10 +59,6 @@
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F49759A66E4ECBB4011C271 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
-		A96D80482B02354F00FABDFE /* RootEncoder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RootEncoder.xcodeproj; path = RootEncoder/RootEncoder/RootEncoder.xcodeproj; sourceTree = "<group>"; };
-		A96D80552B02356000FABDFE /* rtmp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = rtmp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A96D80572B02356800FABDFE /* rtsp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = rtsp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A96D80592B02356C00FABDFE /* encoder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = encoder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AECFF25ECE10681E440EC426 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,10 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A96D805A2B02356C00FABDFE /* encoder.framework in Frameworks */,
-				A96D80582B02356800FABDFE /* rtsp.framework in Frameworks */,
-				A96D80562B02356000FABDFE /* rtmp.framework in Frameworks */,
-				A96D80542B02355A00FABDFE /* RootEncoder.framework in Frameworks */,
 				E8F025B4D96FF08F4E806F8B /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,10 +102,6 @@
 		7E67D4760B28D5A6B0F35154 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A96D80592B02356C00FABDFE /* encoder.framework */,
-				A96D80572B02356800FABDFE /* rtsp.framework */,
-				A96D80552B02356000FABDFE /* rtmp.framework */,
-				A96D80482B02354F00FABDFE /* RootEncoder.xcodeproj */,
 				962026E2B92329370E8BB698 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
@@ -171,15 +154,6 @@
 			path = Runner;
 			sourceTree = "<group>";
 		};
-		A96D80492B02354F00FABDFE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A96D80512B02354F00FABDFE /* RootEncoder.framework */,
-				A96D80532B02354F00FABDFE /* RootEncoderTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,6 +185,7 @@
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
+				A9DAC9052B056B45009FE4FF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,12 +227,6 @@
 			mainGroup = 97C146E51CF9000F007C117D;
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A96D80492B02354F00FABDFE /* Products */;
-					ProjectRef = A96D80482B02354F00FABDFE /* RootEncoder.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
@@ -265,23 +234,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		A96D80512B02354F00FABDFE /* RootEncoder.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RootEncoder.framework;
-			remoteRef = A96D80502B02354F00FABDFE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A96D80532B02354F00FABDFE /* RootEncoderTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RootEncoderTests.xctest;
-			remoteRef = A96D80522B02354F00FABDFE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		331C807F294A63A400263BE5 /* Resources */ = {
@@ -452,7 +404,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -472,7 +424,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -582,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -634,7 +586,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -656,11 +608,12 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.digitopolisstudio.gameonDev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -681,7 +634,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -179,12 +179,12 @@ class FlutterTextView internal constructor(
         return dataAll.openGlView
     }
 
-    override fun onMethodCall(methodCall: MethodCall, result: MethodChannel.Result) {
-        when (methodCall.method) {
-//            "setText" -> setText(methodCall, result)
-            else -> result.notImplemented()
-        }
-    }
+//     override fun onMethodCall(methodCall: MethodCall, result: MethodChannel.Result) {
+//         when (methodCall.method) {
+// //            "setText" -> setText(methodCall, result)
+//             else -> result.notImplemented()
+//         }
+//     }
 
 
     override fun dispose() {}

@@ -1,6 +1,4 @@
 import Flutter
-import RootEncoder
-import rtmp
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -22,7 +20,7 @@ import rtmp
       weak var registrar = self.registrar(forPlugin: "Runner1")
       
       let nativeViewFactory = WebViewFactory(messenger: registrar!.messenger())
-      self.registrar(forPlugin: "Runner")!.register(nativeViewFactory, withId: "plugins.felix.angelov/textview")
+      self.registrar(forPlugin: "Runner")!.register(nativeViewFactory, withId: "MagicPlatformView")
       
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
@@ -106,8 +104,9 @@ class FlutterView: NSObject, FlutterPlatformView, ConnectCheckerRtmp {
         super.init()
         
         rtmpCamera = RtmpCamera(view: _nativeView, connectChecker: self)
+        rtmpCamera.startPreview()
         // iOS views can be created here
-        _methodChannel.setMethodCallHandler(onMethodCall)
+//        _methodChannel.setMethodCallHandler(onMethodCall)
 
     }
 
@@ -115,8 +114,16 @@ class FlutterView: NSObject, FlutterPlatformView, ConnectCheckerRtmp {
     func onMethodCall(call: FlutterMethodCall, result: FlutterResult) {
         switch(call.method){
         case "startService":
+//            rtmpCamera.startPreview()
             result(viewID)
-            break
+        break
+        case "startStream":
+            // let url =  call.arguments as! String
+            if(rtmpCamera.prepareVideo() && rtmpCamera.prepareAudio()){
+            //    rtmpCamera.startStream(url)
+            }
+            result("startStream success")
+        break
         default:
             result(FlutterMethodNotImplemented)
         }
