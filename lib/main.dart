@@ -4,11 +4,11 @@ import 'package:flutter_application_3/platform_channel.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 void main() async {
-  Map<Permission, PermissionStatus> statuses = await [
+  WidgetsFlutterBinding.ensureInitialized();
+  await [
     Permission.camera,
     Permission.microphone,
   ].request();
-  print(statuses[Permission.camera]);
 
   runApp(const MyApp());
 }
@@ -40,14 +40,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int? showId;
-  TextViewController? onTextViewCreated;
+  late RootEncoderViewController onTextViewCreated;
 
   TextEditingController? controllerRtmp = TextEditingController(text: "rtmps://live-api-s.facebook.com:443/rtmp/");
-  TextEditingController? controllerKey = TextEditingController(text: "FB-2556935031130310-0-Abwm0fBHMzVSX0K_");
+  TextEditingController? controllerKey = TextEditingController(text: "FB-2578257528998060-0-AbwCHnu-661m-XoX");
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    Future.delayed(const Duration(seconds: 2), () {
+      print("startPreview");
+      onTextViewCreated.startPreview();
+    });
   }
 
   int indexFilter = 0;
@@ -65,14 +70,32 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // if (showId != null) SizedBox(height: MediaQuery.of(context).size.height - 500, child: const Texture(textureId: 1)),
 
-            // SizedBox(
-            //   height: MediaQuery.of(context).size.height - 500,
-            //   child: TextView(
-            //     onTextViewCreated: (controller) => onTextViewCreated,
-            //   ),
-            // ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height - 300,
+              width: MediaQuery.of(context).size.width,
+              child: TextView(
+                onTextViewCreated: (controller) {
+                  setState(() {
+                    onTextViewCreated = controller;
+                  });
+                },
+              ),
+            ),
             TextFormField(controller: controllerRtmp, decoration: const InputDecoration(labelText: "RTMP")),
             TextFormField(controller: controllerKey, decoration: const InputDecoration(labelText: "KEY")),
+            // TextButton(
+            //   onPressed: () async {
+            //     // await PlatformChannel().startPreview();
+            //     // await Future.delayed(const Duration(seconds: 5));
+            //     // var data = await PlatformChannel().startService();
+            //     // print("test $data");
+            //     // await Future.delayed(Duration(seconds: 5));
+            //     // await onTextViewCreated.startService();
+
+            //     // await PlatformChannel().startPreview();
+            //   },
+            //   child: const Text("startService"),
+            // ),
             TextButton(
               onPressed: () async {
                 // await PlatformChannel().startPreview();
@@ -80,23 +103,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 // var data = await PlatformChannel().startService();
                 // print("test $data");
                 // await Future.delayed(Duration(seconds: 5));
-                onTextViewCreated?.startService();
-                setState(() {
-                  // showId = data;
-                });
+                // await onTextViewCreated.startService();
+
                 // await PlatformChannel().startPreview();
+                await onTextViewCreated.switchCamera();
               },
-              child: const Text("startService"),
+              child: const Text("switchCamera"),
             ),
             TextButton(
-              onPressed: () {
-                PlatformChannel().startStream(Uri.parse("${controllerRtmp?.text}${controllerKey?.text}"));
+              onPressed: () async {
+                // PlatformChannel().startStream(Uri.parse("${controllerRtmp?.text}${controllerKey?.text}"));
+                await onTextViewCreated.startStream(Uri.parse("${controllerRtmp?.text}${controllerKey?.text}"));
               },
               child: const Text("startStream"),
             ),
             TextButton(
-              onPressed: () {
-                PlatformChannel().stopStream();
+              onPressed: () async {
+                // PlatformChannel().stopStream();
+                await onTextViewCreated.stopStream();
               },
               child: const Text("stopStream"),
             ),
@@ -105,7 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 final ByteData bytes = await rootBundle.load('assets/Kit-Cat.png');
                 final Uint8List list = bytes.buffer.asUint8List();
                 print(indexFilter);
-                PlatformChannel().addOverlay(list, indexFilter++);
+                // PlatformChannel().addOverlay(list, indexFilter++);
+                await onTextViewCreated.addOverlay(data: list, filterPosition: 0);
                 print(indexFilter);
               },
               child: const Text("addOverlay1"),
@@ -114,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () async {
                 final ByteData bytes = await rootBundle.load('assets/pdchsfnwjapsf400-1_4.jpg');
                 final Uint8List list = bytes.buffer.asUint8List();
-                PlatformChannel().addOverlay(list, indexFilter++);
+                // PlatformChannel().addOverlay(list, indexFilter++);
                 print("add image");
               },
               child: const Text("addOverlay2"),
@@ -125,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return;
                 }
                 print("del image $indexFilter");
-                PlatformChannel().delOverlay(--indexFilter);
+                // PlatformChannel().delOverlay(--indexFilter);
               },
               child: const Text("delOverlay"),
             ),

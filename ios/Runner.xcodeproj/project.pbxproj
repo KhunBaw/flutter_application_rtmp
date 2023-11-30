@@ -14,6 +14,14 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		A9921D222B108EF400CC925B /* encoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9921D042B108ECF00CC925B /* encoder.framework */; };
+		A9921D232B108EF400CC925B /* encoder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9921D042B108ECF00CC925B /* encoder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A9921D242B108EF400CC925B /* RootEncoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9921D0D2B108EDB00CC925B /* RootEncoder.framework */; };
+		A9921D252B108EF400CC925B /* RootEncoder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9921D0D2B108EDB00CC925B /* RootEncoder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A9921D262B108EF400CC925B /* rtmp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9921D162B108EE200CC925B /* rtmp.framework */; };
+		A9921D272B108EF400CC925B /* rtmp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9921D162B108EE200CC925B /* rtmp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A9921D282B108EF400CC925B /* rtsp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9921D1F2B108EE800CC925B /* rtsp.framework */; };
+		A9921D292B108EF400CC925B /* rtsp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9921D1F2B108EE800CC925B /* rtsp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8F025B4D96FF08F4E806F8B /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962026E2B92329370E8BB698 /* Pods_Runner.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +33,62 @@
 			remoteGlobalIDString = 97C146ED1CF9000F007C117D;
 			remoteInfo = Runner;
 		};
+		A9921D032B108ECF00CC925B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9921CFE2B108ECF00CC925B /* encoder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB173A7D2AC4977200B73F4A;
+			remoteInfo = encoder;
+		};
+		A9921D052B108ECF00CC925B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9921CFE2B108ECF00CC925B /* encoder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB173A872AC4977200B73F4A;
+			remoteInfo = encoderTests;
+		};
+		A9921D0C2B108EDB00CC925B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9921D072B108EDB00CC925B /* RootEncoder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB6562182AC498A600DD8958;
+			remoteInfo = RootEncoder;
+		};
+		A9921D0E2B108EDB00CC925B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9921D072B108EDB00CC925B /* RootEncoder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB6562222AC498A700DD8958;
+			remoteInfo = RootEncoderTests;
+		};
+		A9921D152B108EE200CC925B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9921D102B108EE100CC925B /* rtmp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBB16F172AC4929100B48654;
+			remoteInfo = rtmp;
+		};
+		A9921D172B108EE200CC925B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9921D102B108EE100CC925B /* rtmp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBB16F212AC4929200B48654;
+			remoteInfo = rtmpTests;
+		};
+		A9921D1E2B108EE800CC925B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9921D192B108EE800CC925B /* rtsp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBC6AC1F2AC3839200AAA380;
+			remoteInfo = rtsp;
+		};
+		A9921D202B108EE800CC925B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9921D192B108EE800CC925B /* rtsp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBC6AC292AC3839200AAA380;
+			remoteInfo = rtspTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +98,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A9921D232B108EF400CC925B /* encoder.framework in Embed Frameworks */,
+				A9921D252B108EF400CC925B /* RootEncoder.framework in Embed Frameworks */,
+				A9921D272B108EF400CC925B /* rtmp.framework in Embed Frameworks */,
+				A9921D292B108EF400CC925B /* rtsp.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +127,10 @@
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F49759A66E4ECBB4011C271 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		A9921CFE2B108ECF00CC925B /* encoder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = encoder.xcodeproj; path = "RootEncoder-iOS/encoder/encoder.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		A9921D072B108EDB00CC925B /* RootEncoder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RootEncoder.xcodeproj; path = "RootEncoder-iOS/RootEncoder/RootEncoder.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		A9921D102B108EE100CC925B /* rtmp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = rtmp.xcodeproj; path = "RootEncoder-iOS/rtmp/rtmp.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		A9921D192B108EE800CC925B /* rtsp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = rtsp.xcodeproj; path = "RootEncoder-iOS/rtsp/rtsp.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		AECFF25ECE10681E440EC426 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,7 +146,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9921D242B108EF400CC925B /* RootEncoder.framework in Frameworks */,
+				A9921D262B108EF400CC925B /* rtmp.framework in Frameworks */,
 				E8F025B4D96FF08F4E806F8B /* Pods_Runner.framework in Frameworks */,
+				A9921D282B108EF400CC925B /* rtsp.framework in Frameworks */,
+				A9921D222B108EF400CC925B /* encoder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +218,10 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				A9921D192B108EE800CC925B /* rtsp.xcodeproj */,
+				A9921D102B108EE100CC925B /* rtmp.xcodeproj */,
+				A9921D072B108EDB00CC925B /* RootEncoder.xcodeproj */,
+				A9921CFE2B108ECF00CC925B /* encoder.xcodeproj */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
@@ -152,6 +232,42 @@
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 			);
 			path = Runner;
+			sourceTree = "<group>";
+		};
+		A9921CFF2B108ECF00CC925B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9921D042B108ECF00CC925B /* encoder.framework */,
+				A9921D062B108ECF00CC925B /* encoderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9921D082B108EDB00CC925B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9921D0D2B108EDB00CC925B /* RootEncoder.framework */,
+				A9921D0F2B108EDB00CC925B /* RootEncoderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9921D112B108EE100CC925B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9921D162B108EE200CC925B /* rtmp.framework */,
+				A9921D182B108EE200CC925B /* rtmpTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9921D1A2B108EE800CC925B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9921D1F2B108EE800CC925B /* rtsp.framework */,
+				A9921D212B108EE800CC925B /* rtspTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,12 +296,12 @@
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
 				A6F2767681694F2EF2472F0C /* [CP] Check Pods Manifest.lock */,
+				A9DAC9052B056B45009FE4FF /* Embed Frameworks */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
-				A9DAC9052B056B45009FE4FF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -227,6 +343,24 @@
 			mainGroup = 97C146E51CF9000F007C117D;
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A9921CFF2B108ECF00CC925B /* Products */;
+					ProjectRef = A9921CFE2B108ECF00CC925B /* encoder.xcodeproj */;
+				},
+				{
+					ProductGroup = A9921D082B108EDB00CC925B /* Products */;
+					ProjectRef = A9921D072B108EDB00CC925B /* RootEncoder.xcodeproj */;
+				},
+				{
+					ProductGroup = A9921D112B108EE100CC925B /* Products */;
+					ProjectRef = A9921D102B108EE100CC925B /* rtmp.xcodeproj */;
+				},
+				{
+					ProductGroup = A9921D1A2B108EE800CC925B /* Products */;
+					ProjectRef = A9921D192B108EE800CC925B /* rtsp.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
@@ -234,6 +368,65 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A9921D042B108ECF00CC925B /* encoder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = encoder.framework;
+			remoteRef = A9921D032B108ECF00CC925B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A9921D062B108ECF00CC925B /* encoderTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = encoderTests.xctest;
+			remoteRef = A9921D052B108ECF00CC925B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A9921D0D2B108EDB00CC925B /* RootEncoder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RootEncoder.framework;
+			remoteRef = A9921D0C2B108EDB00CC925B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A9921D0F2B108EDB00CC925B /* RootEncoderTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RootEncoderTests.xctest;
+			remoteRef = A9921D0E2B108EDB00CC925B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A9921D162B108EE200CC925B /* rtmp.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = rtmp.framework;
+			remoteRef = A9921D152B108EE200CC925B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A9921D182B108EE200CC925B /* rtmpTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = rtmpTests.xctest;
+			remoteRef = A9921D172B108EE200CC925B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A9921D1F2B108EE800CC925B /* rtsp.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = rtsp.framework;
+			remoteRef = A9921D1E2B108EE800CC925B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A9921D212B108EE800CC925B /* rtspTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = rtspTests.xctest;
+			remoteRef = A9921D202B108EE800CC925B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		331C807F294A63A400263BE5 /* Resources */ = {
